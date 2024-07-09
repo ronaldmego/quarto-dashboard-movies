@@ -26,11 +26,7 @@ head(starwars)
 
 ### Row { height = "10%" }
 
-aux variable to control updates , first assign x<-1
-```{r}
-x<-x+1
-print(x)
-```
+Placeholder text for column 2, row 1
 
 ### Row { height = "70%" }
 
