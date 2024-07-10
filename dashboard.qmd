@@ -14,12 +14,50 @@ Placeholder text for column 1
 #| echo: false
 #| include: false
 library(tidyverse)
+library(httr2)
 ```
 
+```{r, codehttr2-credencialesocultas-good}
+#| echo: false
+#| include: false
 
-```{r, printstarwars}
-head(starwars)
+token <- Sys.getenv("tmdb_token")
+
+response <- httr2::request("https://api.themoviedb.org/3/movie/now_playing") |> 
+  httr2::req_method("GET") |> 
+  httr2::req_url_query(
+    language = "en-US",
+    page = "1",
+  ) |> 
+  httr2::req_headers(
+    Authorization = paste0("Bearer ",token),
+    accept = "application/json",
+  ) |> 
+  httr2::req_perform() |>
+  httr2::resp_body_json()
 ```
+
+```{r}
+#| echo: false
+# Extraer la lista de películas
+movies_list <- response$results
+
+# Convertir la lista de películas en un dataframe
+movies_df <- tibble::tibble(
+  original_title = sapply(movies_list, function(x) x$original_title),
+  movie_id = sapply(movies_list, function(x) x$id),
+  original_language = sapply(movies_list, function(x) x$original_language),
+  release_date = sapply(movies_list, function(x) x$release_date),
+  popularity = sapply(movies_list, function(x) x$popularity),
+  vote_average = sapply(movies_list, function(x) x$vote_average),
+  vote_count = sapply(movies_list, function(x) x$vote_count),
+  overview = sapply(movies_list, function(x) x$overview)
+)
+
+# Mostrar el dataframe
+print(movies_df)
+```
+
 
 
 ## Column { width = "65%" }
@@ -31,6 +69,10 @@ Placeholder text for column 2, row 1
 ### Row { height = "70%" }
 
 Placeholder text for column 2, row 2
+```{r, printstarwars}
+head(starwars)
+```
+
 
 ### Row { height = "20%" }
 
