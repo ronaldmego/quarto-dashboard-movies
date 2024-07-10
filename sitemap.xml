@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ronaldmego.github.io/movies-dashboard/dashboard.html</loc>
-    <lastmod>2024-07-10T05:02:18.885Z</lastmod>
-  </url>
-  <url>
     <loc>https://ronaldmego.github.io/movies-dashboard/index.html</loc>
-    <lastmod>2024-07-10T05:02:18.885Z</lastmod>
+    <lastmod>2024-07-10T13:10:09.665Z</lastmod>
   </url>
   <url>
     <loc>https://ronaldmego.github.io/movies-dashboard/about.html</loc>
-    <lastmod>2024-07-10T05:02:18.885Z</lastmod>
+    <lastmod>2024-07-10T13:10:09.665Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ronaldmego.github.io/movies-dashboard/dashboard.html</loc>
+    <lastmod>2024-07-10T13:10:09.665Z</lastmod>
   </url>
 </urlset>
