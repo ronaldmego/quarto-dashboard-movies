@@ -21,7 +21,7 @@ library(httr2)
 #| echo: false
 #| include: false
 
-token <- Sys.getenv("tmdb_token")
+token <- Sys.getenv("TMDB_TOKEN")
 
 response <- httr2::request("https://api.themoviedb.org/3/movie/now_playing") |> 
   httr2::req_method("GET") |> 
@@ -37,7 +37,7 @@ response <- httr2::request("https://api.themoviedb.org/3/movie/now_playing") |>
   httr2::resp_body_json()
 ```
 
-```{r}
+```{r, creadataframe}
 #| echo: false
 # Extraer la lista de películas
 movies_list <- response$results
