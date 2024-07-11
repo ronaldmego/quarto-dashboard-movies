@@ -123,31 +123,646 @@ grid-auto-rows: minmax(0, 1fr);">
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 <div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
-<div class="cell-output cell-output-stdout html-fill-item html-fill-container">
-<pre><code># A tibble: 20 × 8
-   original_title             movie_id original_language release_date popularity
-   &lt;chr&gt;                         &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;             &lt;dbl&gt;
- 1 Inside Out 2                1022789 en                2024-06-11       10032.
- 2 Despicable Me 4              519182 en                2024-06-20        5714.
- 3 Furiosa: A Mad Max Saga      786892 en                2024-05-22        2847.
- 4 Bad Boys: Ride or Die        573435 en                2024-06-05        1469.
- 5 In a Violent Nature         1214509 en                2024-05-31        1563.
- 6 Trigger Warning              704673 en                2024-06-20         844.
- 7 Civil War                    929590 en                2024-04-10         837.
- 8 Les Infaillibles            1143019 fr                2024-06-20         733.
- 9 The Watchers                1086747 en                2024-06-06         767.
-10 Beverly Hills Cop: Axel F    280180 en                2024-06-20        1197.
-11 A Quiet Place:&nbsp;Day One       762441 en                2024-06-26         809.
-12 The Garfield Movie           748783 en                2024-04-30         793.
-13 Håndtering av udøde         1020896 no                2024-02-09         528.
-14 IF                           639720 en                2024-05-08         500.
-15 Akademia Pana Kleksa        1026999 pl                2024-01-05         461.
-16 A Family Affair              987686 en                2024-06-27         428.
-17 No Time to Spy: A Loud Ho…  1280768 en                2024-06-21         362.
-18 Space Cadet                 1019411 en                2024-07-04         560.
-19 Immaculate                  1041613 en                2024-03-20         367.
-20 Ultraman: Rising             829402 en                2024-06-14         386.
-# ℹ 3 more variables: vote_average &lt;dbl&gt;, vote_count &lt;int&gt;, overview &lt;chr&gt;</code></pre>
+<div class="cell-output-display html-fill-item html-fill-container">
+<div id="wnxzcqxtyz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
+<style>#wnxzcqxtyz table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wnxzcqxtyz thead, #wnxzcqxtyz tbody, #wnxzcqxtyz tfoot, #wnxzcqxtyz tr, #wnxzcqxtyz td, #wnxzcqxtyz th {
+  border-style: none;
+}
+
+#wnxzcqxtyz p {
+  margin: 0;
+  padding: 0;
+}
+
+#wnxzcqxtyz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #000000;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wnxzcqxtyz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wnxzcqxtyz .gt_title {
+  color: #FFFFFF;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #000000;
+  border-bottom-width: 0;
+}
+
+#wnxzcqxtyz .gt_subtitle {
+  color: #FFFFFF;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #000000;
+  border-top-width: 0;
+}
+
+#wnxzcqxtyz .gt_heading {
+  background-color: #000000;
+  text-align: center;
+  border-bottom-color: #000000;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wnxzcqxtyz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wnxzcqxtyz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wnxzcqxtyz .gt_col_heading {
+  color: #FFFFFF;
+  background-color: #000000;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wnxzcqxtyz .gt_column_spanner_outer {
+  color: #FFFFFF;
+  background-color: #000000;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wnxzcqxtyz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wnxzcqxtyz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wnxzcqxtyz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wnxzcqxtyz .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wnxzcqxtyz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #FFFFFF;
+  background-color: #000000;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wnxzcqxtyz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #FFFFFF;
+  background-color: #000000;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wnxzcqxtyz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wnxzcqxtyz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wnxzcqxtyz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wnxzcqxtyz .gt_stub {
+  color: #FFFFFF;
+  background-color: #000000;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wnxzcqxtyz .gt_stub_row_group {
+  color: #FFFFFF;
+  background-color: #000000;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wnxzcqxtyz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wnxzcqxtyz .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wnxzcqxtyz .gt_summary_row {
+  color: #FFFFFF;
+  background-color: #000000;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wnxzcqxtyz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wnxzcqxtyz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wnxzcqxtyz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wnxzcqxtyz .gt_grand_summary_row {
+  color: #FFFFFF;
+  background-color: #000000;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wnxzcqxtyz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wnxzcqxtyz .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wnxzcqxtyz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wnxzcqxtyz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wnxzcqxtyz .gt_footnotes {
+  color: #FFFFFF;
+  background-color: #000000;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wnxzcqxtyz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wnxzcqxtyz .gt_sourcenotes {
+  color: #FFFFFF;
+  background-color: #000000;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wnxzcqxtyz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wnxzcqxtyz .gt_left {
+  text-align: left;
+}
+
+#wnxzcqxtyz .gt_center {
+  text-align: center;
+}
+
+#wnxzcqxtyz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wnxzcqxtyz .gt_font_normal {
+  font-weight: normal;
+}
+
+#wnxzcqxtyz .gt_font_bold {
+  font-weight: bold;
+}
+
+#wnxzcqxtyz .gt_font_italic {
+  font-style: italic;
+}
+
+#wnxzcqxtyz .gt_super {
+  font-size: 65%;
+}
+
+#wnxzcqxtyz .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wnxzcqxtyz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wnxzcqxtyz .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wnxzcqxtyz .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wnxzcqxtyz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wnxzcqxtyz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wnxzcqxtyz .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wnxzcqxtyz .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wnxzcqxtyz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
+<th id="<div data-qmd-base64=&quot;KipNb3ZpZSoq&quot;><div class='gt_from_md'><p><strong>Movie</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Movie</strong></th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="<div data-qmd-base64=&quot;KipEYXRlKio=&quot;><div class='gt_from_md'><p><strong>Date</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>Date</strong></th>
+<th id="<div data-qmd-base64=&quot;KipQb3B1bGFyaXR5Kio=&quot;><div class='gt_from_md'><p><strong>Popularity</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>Popularity</strong></th>
+<th id="<div data-qmd-base64=&quot;KipBdmVyYWdlKio=&quot;><div class='gt_from_md'><p><strong>Average</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>Average</strong></th>
+<th id="<div data-qmd-base64=&quot;KipWb3Rlcyoq&quot;><div class='gt_from_md'><p><strong>Votes</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>Votes</strong></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Inside Out 2</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-11</td>
+<td class="gt_row gt_right" headers="popularity">10032.488</td>
+<td class="gt_row gt_right" headers="vote_average">7.713</td>
+<td class="gt_row gt_right" headers="vote_count">1562</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/dbtxg1bQYYuWMQvtEuoiUe4uvFJ.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Despicable Me 4</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-20</td>
+<td class="gt_row gt_right" headers="popularity">5713.715</td>
+<td class="gt_row gt_right" headers="vote_average">7.623</td>
+<td class="gt_row gt_right" headers="vote_count">167</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/iADOJ8Zymht2JPMoy3R7xceZprc.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Furiosa: A Mad Max Saga</td>
+<td class="gt_row gt_right" headers="release_date">2024-05-22</td>
+<td class="gt_row gt_right" headers="popularity">2846.633</td>
+<td class="gt_row gt_right" headers="vote_average">7.681</td>
+<td class="gt_row gt_right" headers="vote_count">1969</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/hPfWHgq07nXbeldwEGxWB4JqwtE.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">In a Violent Nature</td>
+<td class="gt_row gt_right" headers="release_date">2024-05-31</td>
+<td class="gt_row gt_right" headers="popularity">1562.551</td>
+<td class="gt_row gt_right" headers="vote_average">5.800</td>
+<td class="gt_row gt_right" headers="vote_count">77</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/nP6RliHjxsz4irTKsxe8FRhKZYl.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Bad Boys: Ride or Die</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-05</td>
+<td class="gt_row gt_right" headers="popularity">1468.910</td>
+<td class="gt_row gt_right" headers="vote_average">7.031</td>
+<td class="gt_row gt_right" headers="vote_count">522</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/zszRKfzjM5jltiq8rk6rasKVpUv.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Beverly Hills Cop: Axel F</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-20</td>
+<td class="gt_row gt_right" headers="popularity">1196.699</td>
+<td class="gt_row gt_right" headers="vote_average">6.972</td>
+<td class="gt_row gt_right" headers="vote_count">405</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/6XJM3C47iGOK9nFU6yLFCSf4U5c.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Trigger Warning</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-20</td>
+<td class="gt_row gt_right" headers="popularity">843.623</td>
+<td class="gt_row gt_right" headers="vote_average">5.875</td>
+<td class="gt_row gt_right" headers="vote_count">292</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/sh7Rg8Er3tFcN9BpKIPOMvALgZd.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Civil War</td>
+<td class="gt_row gt_right" headers="release_date">2024-04-10</td>
+<td class="gt_row gt_right" headers="popularity">836.889</td>
+<td class="gt_row gt_right" headers="vote_average">6.997</td>
+<td class="gt_row gt_right" headers="vote_count">1844</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/yrpPYKijwdMHyTGIOd1iK1h0Xno.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">A Quiet Place:&nbsp;Day One</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-26</td>
+<td class="gt_row gt_right" headers="popularity">809.386</td>
+<td class="gt_row gt_right" headers="vote_average">6.900</td>
+<td class="gt_row gt_right" headers="vote_count">358</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/xYduFGuch9OwbCOEUiamml18ZoB.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">The Garfield Movie</td>
+<td class="gt_row gt_right" headers="release_date">2024-04-30</td>
+<td class="gt_row gt_right" headers="popularity">792.604</td>
+<td class="gt_row gt_right" headers="vote_average">7.027</td>
+<td class="gt_row gt_right" headers="vote_count">261</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/vZVEUPychdvZLrTNwWErr9xZFmu.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">The Watchers</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-06</td>
+<td class="gt_row gt_right" headers="popularity">767.454</td>
+<td class="gt_row gt_right" headers="vote_average">6.569</td>
+<td class="gt_row gt_right" headers="vote_count">436</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/7PoIAvL3Io5v0HyBliXfXZruQTi.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Les Infaillibles</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-20</td>
+<td class="gt_row gt_right" headers="popularity">733.119</td>
+<td class="gt_row gt_right" headers="vote_average">5.844</td>
+<td class="gt_row gt_right" headers="vote_count">45</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/7rda0SRuIGA8BDC8FTYHAOyXaRj.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Space Cadet</td>
+<td class="gt_row gt_right" headers="release_date">2024-07-04</td>
+<td class="gt_row gt_right" headers="popularity">560.308</td>
+<td class="gt_row gt_right" headers="vote_average">5.127</td>
+<td class="gt_row gt_right" headers="vote_count">67</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/6XlHOx0JQNgYjuJ4YQKbrt4Gd4d.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Håndtering av udøde</td>
+<td class="gt_row gt_right" headers="release_date">2024-02-09</td>
+<td class="gt_row gt_right" headers="popularity">527.875</td>
+<td class="gt_row gt_right" headers="vote_average">6.439</td>
+<td class="gt_row gt_right" headers="vote_count">41</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/4lhR4L2vzzjl68P1zJyCH755Oz4.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Monkey Man</td>
+<td class="gt_row gt_right" headers="release_date">2024-04-03</td>
+<td class="gt_row gt_right" headers="popularity">507.514</td>
+<td class="gt_row gt_right" headers="vote_average">7.100</td>
+<td class="gt_row gt_right" headers="vote_count">566</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/xbKFv4KF3sVYuWKllLlwWDmuZP7.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">IF</td>
+<td class="gt_row gt_right" headers="release_date">2024-05-08</td>
+<td class="gt_row gt_right" headers="popularity">500.045</td>
+<td class="gt_row gt_right" headers="vote_average">7.402</td>
+<td class="gt_row gt_right" headers="vote_count">597</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/ymbECZscR8BTkdvXziSinMIckAz.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Akademia Pana Kleksa</td>
+<td class="gt_row gt_right" headers="release_date">2024-01-05</td>
+<td class="gt_row gt_right" headers="popularity">461.332</td>
+<td class="gt_row gt_right" headers="vote_average">6.312</td>
+<td class="gt_row gt_right" headers="vote_count">69</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/l0CaVyqnTsWwNd4hWsrLNEk1Wjd.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">A Family Affair</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-27</td>
+<td class="gt_row gt_right" headers="popularity">428.473</td>
+<td class="gt_row gt_right" headers="vote_average">6.077</td>
+<td class="gt_row gt_right" headers="vote_count">274</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/yy4PktMbJfMp4H8GFAssBxHt0tY.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Ultraman: Rising</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-14</td>
+<td class="gt_row gt_right" headers="popularity">385.855</td>
+<td class="gt_row gt_right" headers="vote_average">8.447</td>
+<td class="gt_row gt_right" headers="vote_count">180</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/fdZpvODTX5wwkD0ikZNaClE4AoW.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Immaculate</td>
+<td class="gt_row gt_right" headers="release_date">2024-03-20</td>
+<td class="gt_row gt_right" headers="popularity">366.682</td>
+<td class="gt_row gt_right" headers="vote_average">6.323</td>
+<td class="gt_row gt_right" headers="vote_count">665</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -184,17 +799,32 @@ grid-auto-rows: minmax(0, 1fr);">
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output cell-output-stdout html-fill-item html-fill-container">
-<pre><code># A tibble: 6 × 14
-  name      height  mass hair_color skin_color eye_color birth_year sex   gender
-  &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
-1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…
-2 C-3PO        167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…
-3 R2-D2         96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…
-4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…
-5 Leia Org…    150    49 brown      light      brown           19   fema… femin…
-6 Owen Lars    178   120 brown, gr… light      blue            52   male  mascu…
-# ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
-#   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<pre><code># A tibble: 20 × 14
+   original_title       movie_id original_language release_date adult popularity
+   &lt;chr&gt;                   &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;        &lt;lgl&gt;      &lt;dbl&gt;
+ 1 Inside Out 2          1022789 en                2024-06-11   FALSE     10032.
+ 2 Despicable Me 4        519182 en                2024-06-20   FALSE      5714.
+ 3 Furiosa: A Mad Max …   786892 en                2024-05-22   FALSE      2847.
+ 4 In a Violent Nature   1214509 en                2024-05-31   FALSE      1563.
+ 5 Bad Boys: Ride or D…   573435 en                2024-06-05   FALSE      1469.
+ 6 Beverly Hills Cop: …   280180 en                2024-06-20   FALSE      1197.
+ 7 Trigger Warning        704673 en                2024-06-20   FALSE       844.
+ 8 Civil War              929590 en                2024-04-10   FALSE       837.
+ 9 A Quiet Place:&nbsp;Day …   762441 en                2024-06-26   FALSE       809.
+10 The Garfield Movie     748783 en                2024-04-30   FALSE       793.
+11 The Watchers          1086747 en                2024-06-06   FALSE       767.
+12 Les Infaillibles      1143019 fr                2024-06-20   FALSE       733.
+13 Space Cadet           1019411 en                2024-07-04   FALSE       560.
+14 Håndtering av udøde   1020896 no                2024-02-09   FALSE       528.
+15 Monkey Man             560016 en                2024-04-03   FALSE       508.
+16 IF                     639720 en                2024-05-08   FALSE       500.
+17 Akademia Pana Kleksa  1026999 pl                2024-01-05   FALSE       461.
+18 A Family Affair        987686 en                2024-06-27   FALSE       428.
+19 Ultraman: Rising       829402 en                2024-06-14   FALSE       386.
+20 Immaculate            1041613 en                2024-03-20   FALSE       367.
+# ℹ 8 more variables: vote_average &lt;dbl&gt;, vote_count &lt;int&gt;, genre_ids &lt;list&gt;,
+#   backdrop_path &lt;chr&gt;, poster_path &lt;chr&gt;, overview &lt;chr&gt;, backdrop_url &lt;chr&gt;,
+#   poster_url &lt;chr&gt;</code></pre>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
