@@ -15,6 +15,7 @@ Placeholder text for column 1
 #| include: false
 library(tidyverse)
 library(httr2)
+library(gt)
 ```
 
 ```{r, codehttr2-credencialesocultas-good}
@@ -35,12 +36,14 @@ response <- httr2::request("https://api.themoviedb.org/3/movie/now_playing") |>
   ) |> 
   httr2::req_perform() |>
   httr2::resp_body_json()
+
+# Extraer la lista de películas
+movies_list <- response$results
 ```
 
 ```{r, creadataframe}
 #| echo: false
-# Extraer la lista de películas
-movies_list <- response$results
+#| include: false
 
 # Convertir la lista de películas en un dataframe
 movies_df <- tibble::tibble(
@@ -48,16 +51,50 @@ movies_df <- tibble::tibble(
   movie_id = sapply(movies_list, function(x) x$id),
   original_language = sapply(movies_list, function(x) x$original_language),
   release_date = sapply(movies_list, function(x) x$release_date),
+  adult = sapply(movies_list, function(x) x$adult),
   popularity = sapply(movies_list, function(x) x$popularity),
   vote_average = sapply(movies_list, function(x) x$vote_average),
   vote_count = sapply(movies_list, function(x) x$vote_count),
+  genre_ids = sapply(movies_list, function(x) x$genre_ids), # Añadir el campo genre_ids
+  backdrop_path = sapply(movies_list, function(x) x$backdrop_path),
+  poster_path = sapply(movies_list, function(x) x$poster_path),
   overview = sapply(movies_list, function(x) x$overview)
 )
 
+# Modificar la columna poster_path para tener la URL completa
+movies_df <- movies_df %>%
+  mutate(
+    backdrop_url = paste0("https://image.tmdb.org/t/p/w780", backdrop_path),
+    poster_url = paste0("https://image.tmdb.org/t/p/w500", poster_path)
+  )
+         
 # Mostrar el dataframe
 print(movies_df)
 ```
 
+```{r, create-gt-table}
+movies_df |>
+  select(poster_url,original_title,release_date,popularity,vote_average,vote_count) |>
+  gt::gt() |>
+  gt::cols_label(
+    poster_url = md("**Movie**"),
+    original_title = "",
+    release_date = md("**Date**"),
+    popularity = md("**Popularity**"),
+    vote_average = md("**Average**"),
+    vote_count = md("**Votes**")
+  ) |>
+  text_transform(
+    fn = function(x) {
+      web_image(url = x , height = 50)
+    },
+    locations = cells_body(columns = poster_url)
+  ) |>
+  tab_options(
+    table.font.color = "#FFFFFF",
+    table.background.color = "#000000"
+  )
+```
 
 
 ## Column { width = "65%" }
@@ -69,8 +106,10 @@ Placeholder text for column 2, row 1
 ### Row { height = "70%" }
 
 Placeholder text for column 2, row 2
-```{r, printstarwars}
-head(starwars)
+```{r, creadataframe}
+#| echo: false
+# Mostrar el dataframe
+print(movies_df)
 ```
 
 
