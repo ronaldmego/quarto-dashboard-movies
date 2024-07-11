@@ -106,7 +106,7 @@ Placeholder text for column 2, row 1
 ### Row { height = "70%" }
 
 Placeholder text for column 2, row 2
-```{r, creadataframe}
+```{r, test}
 #| echo: false
 # Mostrar el dataframe
 print(movies_df)
