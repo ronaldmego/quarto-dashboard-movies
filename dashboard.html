@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>What movies are playing today? – Movies Dashboard</title>
+<title>Películas en cartelera y estadísticas de tmdb.org – Movies Dashboard</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -76,6 +110,11 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<link href="site_libs/value-box-core-0.6.2/value-box.css" rel="stylesheet">
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 
 
 </head>
@@ -93,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="navbar-brand-container">       
     <a href="#"><img src="images/logo.png" alt="" class="navbar-logo d-inline-block"></a>
       <div class="navbar-title">
-        <div class="navbar-title-text"><a href="#">What movies are playing today?</a></div>
+        <div class="navbar-title-text"><a href="#">Películas en cartelera y estadísticas de tmdb.org</a></div>
         
         
       </div>
@@ -108,39 +147,29 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
 <!-- main -->
 
-<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="fill" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="fill" style="display: grid; grid-template-columns: minmax(3em, 35fr) minmax(3em, 65fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card bslib-card html-fill-container" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-body html-fill-item html-fill-container">
-<p>Placeholder text for column 1</p>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
 <div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div id="dhikmzqadt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
-<style>#dhikmzqadt table {
+<div id="ahusvkhxgk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;" class="html-fill-item html-fill-container">
+<style>#ahusvkhxgk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dhikmzqadt thead, #dhikmzqadt tbody, #dhikmzqadt tfoot, #dhikmzqadt tr, #dhikmzqadt td, #dhikmzqadt th {
+#ahusvkhxgk thead, #ahusvkhxgk tbody, #ahusvkhxgk tfoot, #ahusvkhxgk tr, #ahusvkhxgk td, #ahusvkhxgk th {
   border-style: none;
 }
 
-#dhikmzqadt p {
+#ahusvkhxgk p {
   margin: 0;
   padding: 0;
 }
 
-#dhikmzqadt .gt_table {
+#ahusvkhxgk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -166,12 +195,12 @@ grid-auto-rows: minmax(0, 1fr);">
   border-left-color: #D3D3D3;
 }
 
-#dhikmzqadt .gt_caption {
+#ahusvkhxgk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dhikmzqadt .gt_title {
+#ahusvkhxgk .gt_title {
   color: #FFFFFF;
   font-size: 125%;
   font-weight: initial;
@@ -183,7 +212,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-width: 0;
 }
 
-#dhikmzqadt .gt_subtitle {
+#ahusvkhxgk .gt_subtitle {
   color: #FFFFFF;
   font-size: 85%;
   font-weight: initial;
@@ -195,7 +224,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-top-width: 0;
 }
 
-#dhikmzqadt .gt_heading {
+#ahusvkhxgk .gt_heading {
   background-color: #000000;
   text-align: center;
   border-bottom-color: #000000;
@@ -207,13 +236,13 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#dhikmzqadt .gt_bottom_border {
+#ahusvkhxgk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dhikmzqadt .gt_col_headings {
+#ahusvkhxgk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -228,7 +257,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#dhikmzqadt .gt_col_heading {
+#ahusvkhxgk .gt_col_heading {
   color: #FFFFFF;
   background-color: #000000;
   font-size: 100%;
@@ -248,7 +277,7 @@ grid-auto-rows: minmax(0, 1fr);">
   overflow-x: hidden;
 }
 
-#dhikmzqadt .gt_column_spanner_outer {
+#ahusvkhxgk .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #000000;
   font-size: 100%;
@@ -260,15 +289,15 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 4px;
 }
 
-#dhikmzqadt .gt_column_spanner_outer:first-child {
+#ahusvkhxgk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dhikmzqadt .gt_column_spanner_outer:last-child {
+#ahusvkhxgk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dhikmzqadt .gt_column_spanner {
+#ahusvkhxgk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -280,11 +309,11 @@ grid-auto-rows: minmax(0, 1fr);">
   width: 100%;
 }
 
-#dhikmzqadt .gt_spanner_row {
+#ahusvkhxgk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dhikmzqadt .gt_group_heading {
+#ahusvkhxgk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -310,7 +339,7 @@ grid-auto-rows: minmax(0, 1fr);">
   text-align: left;
 }
 
-#dhikmzqadt .gt_empty_group_heading {
+#ahusvkhxgk .gt_empty_group_heading {
   padding: 0.5px;
   color: #FFFFFF;
   background-color: #000000;
@@ -325,15 +354,15 @@ grid-auto-rows: minmax(0, 1fr);">
   vertical-align: middle;
 }
 
-#dhikmzqadt .gt_from_md > :first-child {
+#ahusvkhxgk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dhikmzqadt .gt_from_md > :last-child {
+#ahusvkhxgk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dhikmzqadt .gt_row {
+#ahusvkhxgk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -352,7 +381,7 @@ grid-auto-rows: minmax(0, 1fr);">
   overflow-x: hidden;
 }
 
-#dhikmzqadt .gt_stub {
+#ahusvkhxgk .gt_stub {
   color: #FFFFFF;
   background-color: #000000;
   font-size: 100%;
@@ -365,7 +394,7 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#dhikmzqadt .gt_stub_row_group {
+#ahusvkhxgk .gt_stub_row_group {
   color: #FFFFFF;
   background-color: #000000;
   font-size: 100%;
@@ -379,15 +408,15 @@ grid-auto-rows: minmax(0, 1fr);">
   vertical-align: top;
 }
 
-#dhikmzqadt .gt_row_group_first td {
+#ahusvkhxgk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dhikmzqadt .gt_row_group_first th {
+#ahusvkhxgk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dhikmzqadt .gt_summary_row {
+#ahusvkhxgk .gt_summary_row {
   color: #FFFFFF;
   background-color: #000000;
   text-transform: inherit;
@@ -397,16 +426,16 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#dhikmzqadt .gt_first_summary_row {
+#ahusvkhxgk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dhikmzqadt .gt_first_summary_row.thick {
+#ahusvkhxgk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dhikmzqadt .gt_last_summary_row {
+#ahusvkhxgk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -416,7 +445,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-color: #D3D3D3;
 }
 
-#dhikmzqadt .gt_grand_summary_row {
+#ahusvkhxgk .gt_grand_summary_row {
   color: #FFFFFF;
   background-color: #000000;
   text-transform: inherit;
@@ -426,7 +455,7 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#dhikmzqadt .gt_first_grand_summary_row {
+#ahusvkhxgk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -436,7 +465,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-top-color: #D3D3D3;
 }
 
-#dhikmzqadt .gt_last_grand_summary_row_top {
+#ahusvkhxgk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -446,11 +475,11 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-color: #D3D3D3;
 }
 
-#dhikmzqadt .gt_striped {
+#ahusvkhxgk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dhikmzqadt .gt_table_body {
+#ahusvkhxgk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -459,7 +488,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-color: #D3D3D3;
 }
 
-#dhikmzqadt .gt_footnotes {
+#ahusvkhxgk .gt_footnotes {
   color: #FFFFFF;
   background-color: #000000;
   border-bottom-style: none;
@@ -473,7 +502,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#dhikmzqadt .gt_footnote {
+#ahusvkhxgk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -482,7 +511,7 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#dhikmzqadt .gt_sourcenotes {
+#ahusvkhxgk .gt_sourcenotes {
   color: #FFFFFF;
   background-color: #000000;
   border-bottom-style: none;
@@ -496,7 +525,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#dhikmzqadt .gt_sourcenote {
+#ahusvkhxgk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -504,260 +533,237 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#dhikmzqadt .gt_left {
+#ahusvkhxgk .gt_left {
   text-align: left;
 }
 
-#dhikmzqadt .gt_center {
+#ahusvkhxgk .gt_center {
   text-align: center;
 }
 
-#dhikmzqadt .gt_right {
+#ahusvkhxgk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dhikmzqadt .gt_font_normal {
+#ahusvkhxgk .gt_font_normal {
   font-weight: normal;
 }
 
-#dhikmzqadt .gt_font_bold {
+#ahusvkhxgk .gt_font_bold {
   font-weight: bold;
 }
 
-#dhikmzqadt .gt_font_italic {
+#ahusvkhxgk .gt_font_italic {
   font-style: italic;
 }
 
-#dhikmzqadt .gt_super {
+#ahusvkhxgk .gt_super {
   font-size: 65%;
 }
 
-#dhikmzqadt .gt_footnote_marks {
+#ahusvkhxgk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dhikmzqadt .gt_asterisk {
+#ahusvkhxgk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dhikmzqadt .gt_indent_1 {
+#ahusvkhxgk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dhikmzqadt .gt_indent_2 {
+#ahusvkhxgk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dhikmzqadt .gt_indent_3 {
+#ahusvkhxgk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dhikmzqadt .gt_indent_4 {
+#ahusvkhxgk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dhikmzqadt .gt_indent_5 {
+#ahusvkhxgk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dhikmzqadt .katex-display {
+#ahusvkhxgk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dhikmzqadt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ahusvkhxgk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
 </colgroup>
 <thead>
 <tr class="header gt_col_headings">
 <th id="<div data-qmd-base64=&quot;KipNb3ZpZSoq&quot;><div class='gt_from_md'><p><strong>Movie</strong></p>
 </div></div>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Movie</strong></th>
 <th class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
-<th id="<div data-qmd-base64=&quot;KipEYXRlKio=&quot;><div class='gt_from_md'><p><strong>Date</strong></p>
-</div></div>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>Date</strong></th>
+<th id="<div data-qmd-base64=&quot;KipSZWxlYXNlIERhdGUqKg==&quot;><div class='gt_from_md'><p><strong>Release Date</strong></p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>Release Date</strong></th>
 <th id="<div data-qmd-base64=&quot;KipQb3B1bGFyaXR5Kio=&quot;><div class='gt_from_md'><p><strong>Popularity</strong></p>
 </div></div>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>Popularity</strong></th>
 <th id="<div data-qmd-base64=&quot;KipBdmVyYWdlKio=&quot;><div class='gt_from_md'><p><strong>Average</strong></p>
 </div></div>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>Average</strong></th>
-<th id="<div data-qmd-base64=&quot;KipWb3Rlcyoq&quot;><div class='gt_from_md'><p><strong>Votes</strong></p>
-</div></div>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>Votes</strong></th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/xg27NrXi7VXCGUr7MG75UqLl6Vg.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">Inside Out 2</td>
 <td class="gt_row gt_right" headers="release_date">2024-06-11</td>
-<td class="gt_row gt_right" headers="popularity">5100.537</td>
-<td class="gt_row gt_right" headers="vote_average">7.687</td>
-<td class="gt_row gt_right" headers="vote_count">1924</td>
+<td class="gt_row gt_right" headers="popularity">5,571.08</td>
+<td class="gt_row gt_right" headers="vote_average">7.68</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/3w84hCFJATpiCO5g8hpdWVPBbmq.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/fDmci71SMkfZM8RnCuXJVDPaSdE.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">Despicable Me 4</td>
 <td class="gt_row gt_right" headers="release_date">2024-06-20</td>
-<td class="gt_row gt_right" headers="popularity">3949.400</td>
-<td class="gt_row gt_right" headers="vote_average">7.400</td>
-<td class="gt_row gt_right" headers="vote_count">328</td>
+<td class="gt_row gt_right" headers="popularity">4,439.30</td>
+<td class="gt_row gt_right" headers="vote_average">7.38</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/p6AbOJvMQhBmffd0PIv0u8ghWeY.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/Akv9GlCCMrzcDkVz4ad8MdLl9DK.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">The Garfield Movie</td>
 <td class="gt_row gt_right" headers="release_date">2024-04-30</td>
-<td class="gt_row gt_right" headers="popularity">2053.649</td>
-<td class="gt_row gt_right" headers="vote_average">7.270</td>
-<td class="gt_row gt_right" headers="vote_count">489</td>
+<td class="gt_row gt_right" headers="popularity">2,173.54</td>
+<td class="gt_row gt_right" headers="vote_average">7.28</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/8fYluTtB3b3HKO7KQa5tzrvGaps.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/dn3gbDpXPSwC6saMJOHkCiFA9jn.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">Descendants: The Rise of Red</td>
 <td class="gt_row gt_right" headers="release_date">2024-07-11</td>
-<td class="gt_row gt_right" headers="popularity">2015.902</td>
-<td class="gt_row gt_right" headers="vote_average">7.300</td>
-<td class="gt_row gt_right" headers="vote_count">145</td>
+<td class="gt_row gt_right" headers="popularity">2,030.61</td>
+<td class="gt_row gt_right" headers="vote_average">7.30</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/zszRKfzjM5jltiq8rk6rasKVpUv.jpg" class="img-fluid" style="height:50px;"></td>
-<td class="gt_row gt_left" headers="original_title">Beverly Hills Cop: Axel F</td>
-<td class="gt_row gt_right" headers="release_date">2024-06-20</td>
-<td class="gt_row gt_right" headers="popularity">1214.968</td>
-<td class="gt_row gt_right" headers="vote_average">6.900</td>
-<td class="gt_row gt_right" headers="vote_count">618</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/4lhR4L2vzzjl68P1zJyCH755Oz4.jpg" class="img-fluid" style="height:50px;"></td>
-<td class="gt_row gt_left" headers="original_title">Monkey Man</td>
-<td class="gt_row gt_right" headers="release_date">2024-04-03</td>
-<td class="gt_row gt_right" headers="popularity">1085.504</td>
-<td class="gt_row gt_right" headers="vote_average">7.100</td>
-<td class="gt_row gt_right" headers="vote_count">605</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/nP6RliHjxsz4irTKsxe8FRhKZYl.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/gRApXuxWmO2forYTuTmcz5RaNUV.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">Bad Boys: Ride or Die</td>
 <td class="gt_row gt_right" headers="release_date">2024-06-05</td>
-<td class="gt_row gt_right" headers="popularity">1219.920</td>
-<td class="gt_row gt_right" headers="vote_average">7.123</td>
-<td class="gt_row gt_right" headers="vote_count">573</td>
+<td class="gt_row gt_right" headers="popularity">1,268.17</td>
+<td class="gt_row gt_right" headers="vote_average">7.12</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/xkNK36hQv8SWiwiQoE7naRfP0zL.jpg" class="img-fluid" style="height:50px;"></td>
-<td class="gt_row gt_left" headers="original_title">Boneyard</td>
-<td class="gt_row gt_right" headers="release_date">2024-07-05</td>
-<td class="gt_row gt_right" headers="popularity">713.091</td>
-<td class="gt_row gt_right" headers="vote_average">5.841</td>
-<td class="gt_row gt_right" headers="vote_count">41</td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/rrwt0u1rW685u9bJ9ougg5HJEHC.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Beverly Hills Cop: Axel F</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-20</td>
+<td class="gt_row gt_right" headers="popularity">1,253.63</td>
+<td class="gt_row gt_right" headers="vote_average">6.91</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/ar2h87jlTfMlrDZefR3VFz1SfgH.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/qwhnq8pkFEAFXRwmscISOKK90Mu.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Monkey Man</td>
+<td class="gt_row gt_right" headers="release_date">2024-04-03</td>
+<td class="gt_row gt_right" headers="popularity">1,121.76</td>
+<td class="gt_row gt_right" headers="vote_average">7.07</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/8fNBsXpgMvqk75SPsZzTmIqSRxY.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">The Exorcism</td>
 <td class="gt_row gt_right" headers="release_date">2024-05-30</td>
-<td class="gt_row gt_right" headers="popularity">990.162</td>
-<td class="gt_row gt_right" headers="vote_average">4.400</td>
-<td class="gt_row gt_right" headers="vote_count">70</td>
+<td class="gt_row gt_right" headers="popularity">1,187.12</td>
+<td class="gt_row gt_right" headers="vote_average">4.48</td>
 </tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/fCjC1RRbEJUpDjM55RNUMXQen0b.jpg" class="img-fluid" style="height:50px;"></td>
+<tr class="odd">
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/adAJDB2Au3x5ve2YyWaEYy4EUw.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">Goyo</td>
 <td class="gt_row gt_right" headers="release_date">2024-06-27</td>
-<td class="gt_row gt_right" headers="popularity">782.251</td>
-<td class="gt_row gt_right" headers="vote_average">6.804</td>
-<td class="gt_row gt_right" headers="vote_count">28</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/lJN24nn28s5afC1UnLPYRgYOp1K.jpg" class="img-fluid" style="height:50px;"></td>
-<td class="gt_row gt_left" headers="original_title">Trigger Warning</td>
-<td class="gt_row gt_right" headers="release_date">2024-06-20</td>
-<td class="gt_row gt_right" headers="popularity">593.066</td>
-<td class="gt_row gt_right" headers="vote_average">5.853</td>
-<td class="gt_row gt_right" headers="vote_count">329</td>
+<td class="gt_row gt_right" headers="popularity">796.26</td>
+<td class="gt_row gt_right" headers="vote_average">6.80</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/7PoIAvL3Io5v0HyBliXfXZruQTi.jpg" class="img-fluid" style="height:50px;"></td>
-<td class="gt_row gt_left" headers="original_title">Les Infaillibles</td>
-<td class="gt_row gt_right" headers="release_date">2024-06-20</td>
-<td class="gt_row gt_right" headers="popularity">545.699</td>
-<td class="gt_row gt_right" headers="vote_average">5.921</td>
-<td class="gt_row gt_right" headers="vote_count">63</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/jbwYaoYWZwxtPP76AZnfYKQjCEB.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/dvBCdCohwWbsP5qAaglOXagDMtk.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">Deadpool &amp; Wolverine</td>
 <td class="gt_row gt_right" headers="release_date">2024-07-24</td>
-<td class="gt_row gt_right" headers="popularity">748.360</td>
-<td class="gt_row gt_right" headers="vote_average">0.000</td>
-<td class="gt_row gt_right" headers="vote_count">0</td>
+<td class="gt_row gt_right" headers="popularity">748.36</td>
+<td class="gt_row gt_right" headers="vote_average">8.30</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/uNTciMXpCQDg7gvgMsPCdnxo6Re.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Boneyard</td>
+<td class="gt_row gt_right" headers="release_date">2024-07-05</td>
+<td class="gt_row gt_right" headers="popularity">723.68</td>
+<td class="gt_row gt_right" headers="vote_average">5.84</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/pjnD08FlMAIXsfOLKQbvmO0f0MD.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/7aPrv2HFssWcOtpig5G3HEVk3uS.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">Twisters</td>
 <td class="gt_row gt_right" headers="release_date">2024-07-10</td>
-<td class="gt_row gt_right" headers="popularity">643.960</td>
-<td class="gt_row gt_right" headers="vote_average">7.481</td>
-<td class="gt_row gt_right" headers="vote_count">108</td>
+<td class="gt_row gt_right" headers="popularity">771.65</td>
+<td class="gt_row gt_right" headers="vote_average">7.37</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/yrpPYKijwdMHyTGIOd1iK1h0Xno.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/aATi2PtaOQCVAquCym6OU0Z4FjY.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Trigger Warning</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-20</td>
+<td class="gt_row gt_right" headers="popularity">611.85</td>
+<td class="gt_row gt_right" headers="vote_average">5.80</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/z1aZkp16kzguKi3BHKCuRGRNGq4.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">A Quiet Place:&nbsp;Day One</td>
 <td class="gt_row gt_right" headers="release_date">2024-06-26</td>
-<td class="gt_row gt_right" headers="popularity">585.963</td>
-<td class="gt_row gt_right" headers="vote_average">6.913</td>
-<td class="gt_row gt_right" headers="vote_count">444</td>
+<td class="gt_row gt_right" headers="popularity">652.69</td>
+<td class="gt_row gt_right" headers="vote_average">6.91</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/yHEFwHkU2NqRxBrAoGBfuhuqIL1.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Les Infaillibles</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-20</td>
+<td class="gt_row gt_right" headers="popularity">579.88</td>
+<td class="gt_row gt_right" headers="vote_average">5.92</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/hPfWHgq07nXbeldwEGxWB4JqwtE.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/buawWBeKYjYfeiPoS2jIcjOrghZ.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">In a Violent Nature</td>
 <td class="gt_row gt_right" headers="release_date">2024-05-31</td>
-<td class="gt_row gt_right" headers="popularity">508.553</td>
-<td class="gt_row gt_right" headers="vote_average">5.802</td>
-<td class="gt_row gt_right" headers="vote_count">116</td>
+<td class="gt_row gt_right" headers="popularity">591.92</td>
+<td class="gt_row gt_right" headers="vote_average">5.80</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/ocHu00nOZzK0m9BsFdrFg3SglS0.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/Ahn9zBmRImn0uJ17IuQugjywQZB.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">Le Dernier Jaguar</td>
 <td class="gt_row gt_right" headers="release_date">2024-02-01</td>
-<td class="gt_row gt_right" headers="popularity">474.269</td>
-<td class="gt_row gt_right" headers="vote_average">5.554</td>
-<td class="gt_row gt_right" headers="vote_count">29</td>
+<td class="gt_row gt_right" headers="popularity">494.38</td>
+<td class="gt_row gt_right" headers="vote_average">5.55</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/xbKFv4KF3sVYuWKllLlwWDmuZP7.jpg" class="img-fluid" style="height:50px;"></td>
-<td class="gt_row gt_left" headers="original_title">IF</td>
-<td class="gt_row gt_right" headers="release_date">2024-05-08</td>
-<td class="gt_row gt_right" headers="popularity">392.789</td>
-<td class="gt_row gt_right" headers="vote_average">7.373</td>
-<td class="gt_row gt_right" headers="vote_count">657</td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/8UOAYjhwSF3aPZhm6wgLuyHRyrR.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">Horizon: An American Saga - Chapter 1</td>
+<td class="gt_row gt_right" headers="release_date">2024-06-26</td>
+<td class="gt_row gt_right" headers="popularity">515.87</td>
+<td class="gt_row gt_right" headers="vote_average">7.02</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/ymbECZscR8BTkdvXziSinMIckAz.jpg" class="img-fluid" style="height:50px;"></td>
-<td class="gt_row gt_left" headers="original_title">Akademia Pana Kleksa</td>
-<td class="gt_row gt_right" headers="release_date">2024-01-05</td>
-<td class="gt_row gt_right" headers="popularity">350.776</td>
-<td class="gt_row gt_right" headers="vote_average">6.400</td>
-<td class="gt_row gt_right" headers="vote_count">77</td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/nxxCPRGTzxUH8SFMrIsvMmdxHti.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="original_title">IF</td>
+<td class="gt_row gt_right" headers="release_date">2024-05-08</td>
+<td class="gt_row gt_right" headers="popularity">439.19</td>
+<td class="gt_row gt_right" headers="vote_average">7.37</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="poster_url"><img src="https://image.tmdb.org/t/p/w500/fdZpvODTX5wwkD0ikZNaClE4AoW.jpg" class="img-fluid" style="height:50px;"></td>
+<td class="gt_row gt_left" headers="backdrop_url"><img src="https://image.tmdb.org/t/p/w780/5Eip60UDiPLASyKjmHPMruggTc4.jpg" class="img-fluid" style="height:50px;"></td>
 <td class="gt_row gt_left" headers="original_title">Immaculate</td>
 <td class="gt_row gt_right" headers="release_date">2024-03-20</td>
-<td class="gt_row gt_right" headers="popularity">373.756</td>
-<td class="gt_row gt_right" headers="vote_average">6.321</td>
-<td class="gt_row gt_right" headers="vote_count">709</td>
+<td class="gt_row gt_right" headers="popularity">417.72</td>
+<td class="gt_row gt_right" headers="vote_average">6.32</td>
 </tr>
 </tbody>
 </table>
@@ -771,12 +777,40 @@ grid-auto-rows: minmax(0, 1fr);">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div><div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content) minmax(3em, 1fr) minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
-<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+</div><div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 10fr) minmax(3em, 80fr) minmax(3em, 10fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card bslib-card html-fill-container" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<p>Placeholder text for column 2, row 1</p>
+<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb1" data-startfrom="256" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 255;"><span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a>movies_df_ojs <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"data/movies_data_simplified.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a>viewof movieDropdown <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a>  movies_df_ojs<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">original_title</span>)<span class="op">,</span></span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Choose a movie"</span><span class="op">,</span></span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a>    <span class="dt">unique</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-1-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-1-2" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div style="text-align: right; font-style: italic; color: #888888; font-size: 0.8em; margin-bottom: 20px;" class="html-fill-item html-fill-container">Last updated: 2024-07-21 03:15:27</div>
+</div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
     <template>Expand</template>
@@ -787,9 +821,33 @@ grid-auto-rows: minmax(0, 1fr);">
 </div>
 <div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card bslib-card html-fill-container" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
-<p>Placeholder text for column 2, row 2</p>
+<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb2" data-startfrom="282" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 281;"><span id="cb2-282"><a href="#cb2-282" aria-hidden="true" tabindex="-1"></a>selectedMovie <span class="op">=</span> movies_df_ojs<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">original_title</span> <span class="op">===</span> movieDropdown)</span>
+<span id="cb2-283"><a href="#cb2-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-284"><a href="#cb2-284" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="height: 100%; display: flex; justify-content: center; align-items: center;"&gt;</span></span>
+<span id="cb2-285"><a href="#cb2-285" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;img src="</span><span class="sc">${</span>selectedMovie<span class="op">.</span><span class="at">poster_url</span><span class="sc">}</span><span class="vs">" </span></span>
+<span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a><span class="vs">       alt="</span><span class="sc">${</span>selectedMovie<span class="op">.</span><span class="at">original_title</span><span class="sc">}</span><span class="vs">" </span></span>
+<span id="cb2-287"><a href="#cb2-287" aria-hidden="true" tabindex="-1"></a><span class="vs">       style="max-width: 90%; </span></span>
+<span id="cb2-288"><a href="#cb2-288" aria-hidden="true" tabindex="-1"></a><span class="vs">              max-height: 100%; </span></span>
+<span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a><span class="vs">              width: auto; </span></span>
+<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a><span class="vs">              height: auto; </span></span>
+<span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a><span class="vs">              object-fit: contain;"&gt;</span></span>
+<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-2-1" data-nodetype="declaration" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="ojs-cell-2-2" data-nodetype="expression" class="html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
     <template>Expand</template>
@@ -798,33 +856,19 @@ grid-auto-rows: minmax(0, 1fr);">
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
-<div class="cell-output cell-output-stdout html-fill-item html-fill-container">
-<pre><code># A tibble: 20 × 14
-   original_title       movie_id original_language release_date adult popularity
-   &lt;chr&gt;                   &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;        &lt;lgl&gt;      &lt;dbl&gt;
- 1 Inside Out 2          1022789 en                2024-06-11   FALSE      5101.
- 2 Despicable Me 4        519182 en                2024-06-20   FALSE      3949.
- 3 The Garfield Movie     748783 en                2024-04-30   FALSE      2054.
- 4 Descendants: The Ri…   974262 en                2024-07-11   FALSE      2016.
- 5 Beverly Hills Cop: …   280180 en                2024-06-20   FALSE      1215.
- 6 Monkey Man             560016 en                2024-04-03   FALSE      1086.
- 7 Bad Boys: Ride or D…   573435 en                2024-06-05   FALSE      1220.
- 8 Boneyard              1114738 en                2024-07-05   FALSE       713.
- 9 The Exorcism           646683 en                2024-05-30   FALSE       990.
-10 Goyo                  1191610 es                2024-06-27   FALSE       782.
-11 Trigger Warning        704673 en                2024-06-20   FALSE       593.
-12 Les Infaillibles      1143019 fr                2024-06-20   FALSE       546.
-13 Deadpool &amp; Wolverine   533535 en                2024-07-24   FALSE       748.
-14 Twisters               718821 en                2024-07-10   FALSE       644.
-15 A Quiet Place:&nbsp;Day …   762441 en                2024-06-26   FALSE       586.
-16 In a Violent Nature   1214509 en                2024-05-31   FALSE       509.
-17 Le Dernier Jaguar      959098 fr                2024-02-01   FALSE       474.
-18 IF                     639720 en                2024-05-08   FALSE       393.
-19 Akademia Pana Kleksa  1026999 pl                2024-01-05   FALSE       351.
-20 Immaculate            1041613 en                2024-03-20   FALSE       374.
-# ℹ 8 more variables: vote_average &lt;dbl&gt;, vote_count &lt;int&gt;, genre_ids &lt;list&gt;,
-#   backdrop_path &lt;chr&gt;, poster_path &lt;chr&gt;, overview &lt;chr&gt;, backdrop_url &lt;chr&gt;,
-#   poster_url &lt;chr&gt;</code></pre>
+<div class="sourceCode cell-code hidden html-fill-item html-fill-container" id="cb3" data-startfrom="296" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 295;"><span id="cb3-296"><a href="#cb3-296" aria-hidden="true" tabindex="-1"></a><span class="co">// Mostrar estadísticas adicionales</span></span>
+<span id="cb3-297"><a href="#cb3-297" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top: 20px;"&gt;</span></span>
+<span id="cb3-298"><a href="#cb3-298" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h3&gt;</span><span class="sc">${</span>selectedMovie<span class="op">.</span><span class="at">original_title</span><span class="sc">}</span><span class="vs">&lt;/h3&gt;</span></span>
+<span id="cb3-299"><a href="#cb3-299" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;Release Date: </span><span class="sc">${</span>selectedMovie<span class="op">.</span><span class="at">release_date</span><span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
+<span id="cb3-300"><a href="#cb3-300" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;Average Vote: </span><span class="sc">${</span>selectedMovie<span class="op">.</span><span class="at">vote_average</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
+<span id="cb3-301"><a href="#cb3-301" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;Vote Count: </span><span class="sc">${</span>selectedMovie<span class="op">.</span><span class="at">vote_count</span><span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
+<span id="cb3-302"><a href="#cb3-302" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;Popularity: </span><span class="sc">${</span>selectedMovie<span class="op">.</span><span class="at">popularity</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
+<span id="cb3-303"><a href="#cb3-303" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;Overview: </span><span class="sc">${</span>selectedMovie<span class="op">.</span><span class="at">overview</span><span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
+<span id="cb3-304"><a href="#cb3-304" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display html-fill-item html-fill-container">
+<div id="ojs-cell-3" data-nodetype="expression" class="html-fill-item html-fill-container">
+
+</div>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -837,8 +881,8 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div class="card bslib-card html-fill-container" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-body html-fill-item html-fill-container">
-<p>Placeholder text for column 2, row 3</p>
+<div class="card-body flow">
+placeholder
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
     <template>Expand</template>
@@ -853,6 +897,17 @@ grid-auto-rows: minmax(0, 1fr);">
 </div>
 
 
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxubW92aWVzX2RmX29qcyA9IGF3YWl0IEZpbGVBdHRhY2htZW50KFwiZGF0YS9tb3ZpZXNfZGF0YV9zaW1wbGlmaWVkLmpzb25cIikuanNvbigpXG5cbnZpZXdvZiBtb3ZpZURyb3Bkb3duID0gSW5wdXRzLnNlbGVjdChcbiAgbW92aWVzX2RmX29qcy5tYXAoZCA9PiBkLm9yaWdpbmFsX3RpdGxlKSxcbiAge1xuICAgIGxhYmVsOiBcIkNob29zZSBhIG1vdmllXCIsXG4gICAgdW5pcXVlOiB0cnVlXG4gIH1cbilcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InNlbGVjdGVkTW92aWUgPSBtb3ZpZXNfZGZfb2pzLmZpbmQoZCA9PiBkLm9yaWdpbmFsX3RpdGxlID09PSBtb3ZpZURyb3Bkb3duKVxuXG5odG1sYDxkaXYgc3R5bGU9XCJoZWlnaHQ6IDEwMCU7IGRpc3BsYXk6IGZsZXg7IGp1c3RpZnktY29udGVudDogY2VudGVyOyBhbGlnbi1pdGVtczogY2VudGVyO1wiPlxuICA8aW1nIHNyYz1cIiR7c2VsZWN0ZWRNb3ZpZS5wb3N0ZXJfdXJsfVwiIFxuICAgICAgIGFsdD1cIiR7c2VsZWN0ZWRNb3ZpZS5vcmlnaW5hbF90aXRsZX1cIiBcbiAgICAgICBzdHlsZT1cIm1heC13aWR0aDogOTAlOyBcbiAgICAgICAgICAgICAgbWF4LWhlaWdodDogMTAwJTsgXG4gICAgICAgICAgICAgIHdpZHRoOiBhdXRvOyBcbiAgICAgICAgICAgICAgaGVpZ2h0OiBhdXRvOyBcbiAgICAgICAgICAgICAgb2JqZWN0LWZpdDogY29udGFpbjtcIj5cbjwvZGl2PmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIE1vc3RyYXIgZXN0YWTDrXN0aWNhcyBhZGljaW9uYWxlc1xuaHRtbGA8ZGl2IHN0eWxlPVwibWFyZ2luLXRvcDogMjBweDtcIj5cbiAgPGgzPiR7c2VsZWN0ZWRNb3ZpZS5vcmlnaW5hbF90aXRsZX08L2gzPlxuICA8cD5SZWxlYXNlIERhdGU6ICR7c2VsZWN0ZWRNb3ZpZS5yZWxlYXNlX2RhdGV9PC9wPlxuICA8cD5BdmVyYWdlIFZvdGU6ICR7c2VsZWN0ZWRNb3ZpZS52b3RlX2F2ZXJhZ2UudG9GaXhlZCgyKX08L3A+XG4gIDxwPlZvdGUgQ291bnQ6ICR7c2VsZWN0ZWRNb3ZpZS52b3RlX2NvdW50fTwvcD5cbiAgPHA+UG9wdWxhcml0eTogJHtzZWxlY3RlZE1vdmllLnBvcHVsYXJpdHkudG9GaXhlZCgyKX08L3A+XG4gIDxwPk92ZXJ2aWV3OiAke3NlbGVjdGVkTW92aWUub3ZlcnZpZXd9PC9wPlxuPC9kaXY+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtb3ZpZURyb3Bkb3duJykifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
