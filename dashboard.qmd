@@ -2,7 +2,7 @@
 title: "Películas en cartelera y estadísticas de tmdb.org"
 format:
   dashboard:
-    logo: "images/logo.png"
+    logo: "images/creator.png"
     orientation: columns
 ---
 
@@ -317,8 +317,14 @@ valueBox(
   caption = "Last Update",
   color = "info"
 )
+#//<img src="images/creator.png" alt="Creator Logo" style="height: 50px; max-width: 100%; object-fit: contain;">
 ```
 
 ### Row {height="10%"}
 
-placeholder
+<div style="display: flex; justify-content: space-between; align-items: center; height: 100%; padding: 0 20px;">
+  <img src="images/logo.png" alt="Creator Logo" style="height: 50px; max-width: 100%; object-fit: contain;">
+  <p style="font-size: 12px; color: #666; text-align: right; margin-left: 20px;">
+    Los datos son cortesía del API de tmdb.org. Los datos se extraen bajo las políticas establecidas.
+  </p>
+</div>

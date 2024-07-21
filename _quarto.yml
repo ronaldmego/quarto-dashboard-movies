@@ -7,10 +7,10 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      - href: about.qmd
-        text: About
       - href: dashboard.qmd
         text: Dashboard
+      - href: about.qmd
+        text: About
 
 format:
   html:

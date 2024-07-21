@@ -1,11 +1,9 @@
 ---
-title: "movies-dashboard"
+title: "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions"
 ---
 
-This is a Quarto website.
+Este es un proyecto que muestra las capacidades de Quarto y Github Actions, en este enlace se llega al [Dashboard](https://ronaldmego.github.io/Quarto-dashboard-movies/dashboard.html)
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Este trabajo fue elaborado por Ronald Mego![](images/demo.png)
 
-```{r}
-1 + 1
-```
+Este trabajo esta inspirado en el proyecto ganador del post it contest donde la ganadora fue [Melissa Van Bussel](https://github.com/melissavanbussel).
