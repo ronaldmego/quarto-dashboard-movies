@@ -1,14 +1,12 @@
 ---
-title: "What movies are playing today?"
+title: "Películas en cartelera y estadísticas de tmdb.org"
 format:
   dashboard:
     logo: "images/logo.png"
     orientation: columns
 ---
 
-## Column { width = "35%" }
-
-Placeholder text for column 1
+## Column {width="35%"}
 
 ```{r, loadpackages}
 #| echo: false
@@ -39,6 +37,51 @@ response <- httr2::request("https://api.themoviedb.org/3/movie/now_playing") |>
 
 # Extraer la lista de películas
 movies_list <- response$results
+```
+
+```{r, get last update}
+#| echo: false
+#| include: false
+
+get_last_update <- function() {
+  last_update <- Sys.time()
+  return(last_update)
+}
+
+# Usar la función para obtener la última actualización
+last_update <- get_last_update()
+```
+
+```{r, funcion que guarda los datos}
+#| echo: false
+#| include: false
+save_daily_data <- function(data) {
+  today <- Sys.Date()
+  filename <- paste0("data/movies_", today, ".rds")
+  
+  # Cargar datos existentes si el archivo existe
+  if (file.exists(filename)) {
+    existing_data <- readRDS(filename)
+    
+    # Combinar datos existentes con nuevos datos
+    combined_data <- rbind(existing_data, data)
+    
+    # Eliminar duplicados basados en movie_id y date
+    deduped_data <- combined_data %>%
+      distinct(movie_id, date, .keep_all = TRUE)
+  } else {
+    deduped_data <- data
+  }
+  
+  # Guardar datos sin duplicados
+  saveRDS(deduped_data, file = filename)
+  
+  # Eliminar archivos antiguos (más de 8 días)
+  files <- list.files("data", pattern = "movies_.*\\.rds", full.names = TRUE)
+  file_dates <- as.Date(sub(".*movies_(.*)\\.rds", "\\1", files))
+  old_files <- files[file_dates < (today - 8)]
+  file.remove(old_files)
+}
 ```
 
 ```{r, creadataframe}
@@ -72,9 +115,39 @@ movies_df <- movies_df %>%
 print(movies_df)
 ```
 
+```{r, carga datos historicos y graba los datos}
+#| echo: false
+#| include: false
+
+load_historical_data <- function() {
+  files <- list.files("data", pattern = "movies_.*\\.rds", full.names = TRUE)
+  data_list <- lapply(files, readRDS)
+  combined_data <- do.call(rbind, data_list)
+  
+  # Eliminar duplicados
+  distinct_data <- combined_data %>%
+    distinct(movie_id, date, .keep_all = TRUE)
+  
+  return(distinct_data)
+}
+
+# Cargar datos históricos
+historical_data <- load_historical_data()
+
+# Combinar datos históricos con los nuevos datos
+movies_df <- movies_df %>%
+  mutate(date = Sys.Date()) %>%
+  rbind(historical_data)
+
+# Guardar los nuevos datos
+save_daily_data(movies_df)
+```
+
 ```{r, create-gt-table}
+#| echo: false
+#| include: false
 movies_df |>
-  select(poster_url,original_title,release_date,popularity,vote_average,vote_count) |>
+  select(backdrop_url,poster_url,original_title,release_date,popularity,vote_average,vote_count) |>
   gt::gt() |>
   gt::cols_label(
     poster_url = md("**Movie**"),
@@ -96,23 +169,156 @@ movies_df |>
   )
 ```
 
-
-## Column { width = "65%" }
-
-### Row { height = "10%" }
-
-Placeholder text for column 2, row 1
-
-### Row { height = "70%" }
-
-Placeholder text for column 2, row 2
-```{r, test}
+```{r, funcion tendencia}
+# Aquí inicia otro chunk
 #| echo: false
-# Mostrar el dataframe
-print(movies_df)
+#| include: false
+
+calculate_trend <- function(data) {
+  data %>%
+    group_by(original_title) %>%
+    arrange(date) %>%
+    mutate(
+      trend = (vote_average - lag(vote_average, 7, default = first(vote_average))) / 7
+    ) %>%
+    ungroup() %>%
+    filter(date == max(date))  # Solo mantener los datos más recientes
+}
+
+movies_with_trend <- calculate_trend(movies_df)
+```
+
+```{r, gt-table con tendencia}
+# Aquí inicia otro chunk
+#| echo: false
+
+movies_with_trend %>%
+  select(backdrop_url, original_title, release_date, popularity, vote_average) %>%
+  gt::gt() %>%
+  gt::cols_label(
+    backdrop_url = md("**Movie**"),
+    original_title = "",
+    release_date = md("**Release Date**"),
+    popularity = md("**Popularity**"),
+    vote_average = md("**Average**")
+  ) %>%
+  text_transform(
+    fn = function(x) {
+      web_image(url = x, height = 50)
+    },
+    locations = cells_body(columns = backdrop_url)
+  ) %>%
+  fmt_number(
+    columns = c(popularity, vote_average),
+    decimals = 2
+  ) %>%
+  tab_options(
+    table.font.color = "#FFFFFF",
+    table.background.color = "#000000"
+  )
 ```
 
 
-### Row { height = "20%" }
+## Column {width="65%"}
 
-Placeholder text for column 2, row 3
+### Row {height="10%"}
+
+```{r}
+#| echo: false
+#| include: false
+# Excluir el campo genre_ids y convertir a JSON
+movies_df_simplified <- movies_df %>% select(-genre_ids)  # Excluye la columna genre_ids
+str(movies_df_simplified)
+sapply(movies_df_simplified, class)
+```
+
+
+```{r, send to ojs}
+#| echo: false
+#| include: false
+library(jsonlite)
+library(dplyr)
+
+# Convertir el dataframe simplificado a JSON y escribirlo en un archivo en la carpeta "data"
+#write_json(movies_df_simplified, "data/movies_data_simplified.json")
+
+json_data <- toJSON(movies_df_simplified, auto_unbox = TRUE, pretty = TRUE)
+write(json_data, "data/movies_data_simplified.json")
+```
+
+
+
+
+
+```{ojs}
+//| expandable: false
+
+movies_df_ojs = await FileAttachment("data/movies_data_simplified.json").json()
+
+viewof movieDropdown = Inputs.select(
+  movies_df_ojs.map(d => d.original_title),
+  {
+    label: "Choose a movie",
+    unique: true
+  }
+)
+```
+
+
+```{r, poner la ultima hora actualizada en el dashboard}
+#| echo: false
+library(htmltools)
+
+htmltools::div(
+  style = "text-align: right; font-style: italic; color: #888888; font-size: 0.8em; margin-bottom: 20px;",
+  paste("Last updated:", format(last_update, "%Y-%m-%d %H:%M:%S"))
+)
+```
+
+
+### Row {height="80%"}
+
+```{ojs}
+selectedMovie = movies_df_ojs.find(d => d.original_title === movieDropdown)
+
+html`<div style="height: 100%; display: flex; justify-content: center; align-items: center;">
+  <img src="${selectedMovie.poster_url}" 
+       alt="${selectedMovie.original_title}" 
+       style="max-width: 90%; 
+              max-height: 100%; 
+              width: auto; 
+              height: auto; 
+              object-fit: contain;">
+</div>`
+```
+
+
+```{ojs}
+// Mostrar estadísticas adicionales
+html`<div style="margin-top: 20px;">
+  <h3>${selectedMovie.original_title}</h3>
+  <p>Release Date: ${selectedMovie.release_date}</p>
+  <p>Average Vote: ${selectedMovie.vote_average.toFixed(2)}</p>
+  <p>Vote Count: ${selectedMovie.vote_count}</p>
+  <p>Popularity: ${selectedMovie.popularity.toFixed(2)}</p>
+  <p>Overview: ${selectedMovie.overview}</p>
+</div>`
+```
+
+
+```{r, test}
+#| echo: false
+#| include: false
+# Mostrar el dataframe
+library(flexdashboard)
+valueBox(
+  value = format(last_update, "%Y-%m-%d"),
+  icon = "fa-calendar",
+  caption = "Last Update",
+  color = "info"
+)
+```
+
+### Row {height="10%"}
+
+placeholder
