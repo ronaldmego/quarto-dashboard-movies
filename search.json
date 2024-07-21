@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "movies-dashboard",
+    "title": "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2",
+    "text": "Este es un proyecto que muestra las capacidades de Quarto y Github Actions, en este enlace se llega al Dashboard\nEste trabajo fue elaborado por Ronald Mego\nEste trabajo esta inspirado en el proyecto ganador del post it contest donde la ganadora fue Melissa Van Bussel.",
     "crumbs": [
       "Home"
     ]
