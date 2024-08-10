@@ -15,6 +15,6 @@ website:
 format:
   html:
     theme: 
-     light: cosmo
+     light: custom.scss
      dark: [cosmo, custom.scss]
     toc: true
