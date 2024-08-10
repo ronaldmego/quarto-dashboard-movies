@@ -4,7 +4,47 @@
     "href": "index.html",
     "title": "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions",
     "section": "",
-    "text": "Este es un proyecto que muestra las capacidades de Quarto y Github Actions, en este enlace se llega al Dashboard\nEste trabajo fue elaborado por Ronald Mego\nEste trabajo esta inspirado en el proyecto ganador del post it contest donde la ganadora fue Melissa Van Bussel.",
+    "text": "Este es un proyecto que muestra las capacidades de Quarto y Github Actions, en este enlace se llega al Dashboard",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#github-actions",
+    "href": "index.html#github-actions",
+    "title": "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions",
+    "section": "Github actions",
+    "text": "Github actions",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#renv",
+    "href": "index.html#renv",
+    "title": "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions",
+    "section": "Renv",
+    "text": "Renv",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#api-coenxion",
+    "href": "index.html#api-coenxion",
+    "title": "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions",
+    "section": "API coenxion",
+    "text": "API coenxion",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#gt-tables",
+    "href": "index.html#gt-tables",
+    "title": "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions",
+    "section": "GT tables",
+    "text": "GT tables\nEste trabajo fue elaborado por Ronald Mego\nEste trabajo esta inspirado en el proyecto ganador del post it contest donde la ganadora fue Melissa Van Bussel.",
     "crumbs": [
       "Home"
     ]
