@@ -122,7 +122,7 @@ generate_clock_svg <- function(days_in_theaters, max_days, min_days) {
   angle <- ((days_in_theaters - min_days) / (max_days - min_days)) * 360
   
   # Calcular las coordenadas finales de la línea del reloj usando la escala de 360 grados
-  radians <- pi * (angle / 180)
+  radians <- pi * (angle / 360)
   x <- 25 + 20 * cos(radians)
   y <- 25 - 20 * sin(radians)
   
