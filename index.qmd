@@ -4,6 +4,12 @@ title: "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions"
 
 Este es un proyecto que muestra las capacidades de Quarto y Github Actions, en este enlace se llega al [Dashboard](https://ronaldmego.github.io/Quarto-dashboard-movies/dashboard.html)
 
+# Aqui se usa elemntos como:
+## Github actions
+## Renv
+## API coenxion
+## GT tables
+
 Este trabajo fue elaborado por Ronald Mego![](images/demo.png)
 
 Este trabajo esta inspirado en el proyecto ganador del post it contest donde la ganadora fue [Melissa Van Bussel](https://github.com/melissavanbussel).
