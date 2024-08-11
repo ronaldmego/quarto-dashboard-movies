@@ -2,49 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions",
+    "title": "Quarto Dashboards + GitHub Actions",
     "section": "",
-    "text": "Este es un proyecto que muestra las capacidades de Quarto y Github Actions, en este enlace se llega al Dashboard",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#github-actions",
-    "href": "index.html#github-actions",
-    "title": "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions",
-    "section": "Github actions",
-    "text": "Github actions",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#renv",
-    "href": "index.html#renv",
-    "title": "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions",
-    "section": "Renv",
-    "text": "Renv",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#api-coenxion",
-    "href": "index.html#api-coenxion",
-    "title": "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions",
-    "section": "API coenxion",
-    "text": "API coenxion",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#gt-tables",
-    "href": "index.html#gt-tables",
-    "title": "Proyecto Ilustrativo sobre uso de APIs, QUarto, Github Actions",
-    "section": "GT tables",
-    "text": "GT tables\nEste trabajo fue elaborado por Ronald Mego\nEste trabajo esta inspirado en el proyecto ganador del post it contest donde la ganadora fue Melissa Van Bussel.",
+    "text": "En este proyecto, muestro las capacidades de Quarto y GitHub Actions para la creación de dashboards interactivos. Puedes ver el Dashboard aquí 📊.\n\nTecnologías y Herramientas Usadas:\n\n🧑‍💻 GitHub Actions: Para la automatización y despliegue continuo.\n📦 Renv: Para la gestión de entornos en R.\n🌐 Conexión API: Para obtener datos en tiempo real.\n📋 GT Tables: Para crear tablas interactivas y estilizadas.\n\nEste trabajo fue elaborado por Ronald Mego y está inspirado en el proyecto ganador del Posit Table Contest 2024, donde la ganadora fue Melissa Van Bussel 🏆.\n\n🔗 Explora el dashboard: Puedes acceder al dashboard interactivo haciendo clic aquí.\n🔗 Revisa la documentación completa: Aprende cómo se construyó este proyecto paso a paso haciendo clic aquí.\n\nGracias por visitar el proyecto. ¡Espero que te sea útil y te inspire a crear tus propios dashboards con Quarto y GitHub Actions!",
     "crumbs": [
       "Home"
     ]
