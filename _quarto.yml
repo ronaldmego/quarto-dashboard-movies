@@ -3,8 +3,18 @@ project:
 
 website:
   title: "Movies Dashboard"
+  favicon: images/creator.png
+  page-navigation: true
+  site-url: https://ronaldmego.github.io/Quarto-dashboard-movies/dashboard
+  repo-url: https://github.com/ronaldmego/Quarto-dashboard-movies
+  repo-actions: [edit, source, issue]
   sidebar:
-    contents:
+    title: "Daily updated Movies Dashboards"
+    style: "docked"
+    search: false
+    collapse-level: 1
+    logo: images/creator.png
+    contents: 
       - href: index.qmd
         text: Home
       - href: dashboard.qmd
@@ -12,7 +22,8 @@ website:
 
 format:
   html:
-    theme: 
-     light: custom.scss
-     dark: [cosmo, custom.scss]
+    theme: [cosmo, custom.scss]
+    highlight-style: atom-one-dark
     toc: true
+    grid:
+      sidebar-width: 150px

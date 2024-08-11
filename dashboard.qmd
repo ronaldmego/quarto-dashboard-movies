@@ -1,5 +1,5 @@
 ---
-title: "Películas en cartelera y estadísticas de tmdb.org"
+title: "Today's Movies in U.S. Theaters with updated Statistics from tmdb.org"
 format:
   dashboard:
     logo: "images/creator.png"
@@ -96,7 +96,7 @@ generate_star_rating <- function(vote_averages) {
     stars_html <- paste0(stars_html, strrep('<span style="color: #d3d3d3; font-size: 1.8em;">&#9733;</span>', empty_stars))
     
     # Incluir el número redondeado después de las estrellas con tamaño ajustado
-    stars_html <- paste0(stars_html, ' ', '<span style="font-size: 1.5em; color: white;">', vote_average, '</span>')
+    stars_html <- paste0(stars_html, ' ', '<span style="font-size: 1.2em; color: white;">', vote_average, '</span>')
     
     return(stars_html)
   }, USE.NAMES = FALSE)
@@ -178,21 +178,21 @@ min_popularity <- min(movies_df$popularity, na.rm = TRUE)
 
 # Crear la tabla GT con la barra de progreso dinámica y el termómetro intercambiados
 movies_df %>%
-  select(backdrop_url, original_title, vote_average, days_in_theaters, popularity) %>%  # Cambia el orden aquí
+  select(poster_url, original_title, vote_average, days_in_theaters, popularity) %>%  # Cambia el orden aquí
   gt::gt() %>%
   gt::cols_label(
-    backdrop_url = md("**Movie**"),
-    original_title = "",
-    vote_average = md("**Stars**"),  # Renombrar a Puntuación
+    poster_url = md("**Poster**"),
+    original_title = md("**Movie**"),
+    vote_average = md("**Average Vote**"),  # Renombrar a Puntuación
     days_in_theaters = md("**Days in Theaters**"),
     popularity = md("**Popularity**")
-  ) %>%
+  )  %>%
   fmt_number(
     columns = c("days_in_theaters"),
     decimals = 0
   ) %>%
   text_transform(
-    locations = cells_body(columns = backdrop_url),
+    locations = cells_body(columns = poster_url),
     fn = function(x) { web_image(url = x, height = 80) }
   ) %>%
   text_transform(
@@ -203,7 +203,7 @@ movies_df %>%
   ) %>%
   text_transform(
     fn = function(x) {
-      sapply(as.numeric(x), generate_dynamic_progress_bar, max_value = max_days, min_value = min_days)
+      paste0('<div style="margin-left: 50px;">', sapply(as.numeric(x), generate_dynamic_progress_bar, max_value = max_days, min_value = min_days), '</div>')
     },
     locations = cells_body(columns = "days_in_theaters")
   ) %>%
@@ -215,7 +215,7 @@ movies_df %>%
   ) %>%
   cols_align(
     align = "center",
-    columns = c("vote_average", "days_in_theaters", "popularity")
+    columns = c("poster_url","vote_average", "days_in_theaters", "popularity")
   ) %>%
   tab_style(
     style = list(
@@ -223,6 +223,13 @@ movies_df %>%
     ),
     locations = cells_body(columns = "original_title")
   ) %>%
+  tab_style(
+    style = list(
+      cell_text(color = "#FFA500", weight = "bold",size = px(15))  # Cambia el color del texto a naranja (#FFA500)
+    ),
+    locations = cells_column_labels(
+      columns = c("poster_url","original_title", "vote_average", "days_in_theaters", "popularity"))
+    ) %>%
   tab_options(
     table.font.color = "#FFFFFF",
     table.background.color = "#000000",
@@ -235,8 +242,8 @@ movies_df %>%
     column_labels.border.top.color = "transparent"
   )
 
-
 ```
+
 
 ## Column {width="40%"}
 
@@ -307,31 +314,6 @@ htmltools::div(
 
 ### Row {height="80%"}
 
-```{r}
-# selectedMovie = movies_df_ojs.find(d => d.original_title === movieDropdown)
-# 
-# html`<div style="height: 100%; display: flex; justify-content: center; align-items: center;">
-#   <img src="${selectedMovie.poster_url}"
-#        alt="${selectedMovie.original_title}"
-#        style="max-width: 90%;
-#               max-height: 100%;
-#               width: auto;
-#               height: auto;
-#               object-fit: contain;">
-# </div>`
-```
-
-```{r}
-# // Mostrar estadísticas adicionales
-# html`<div style="margin-top: 20px;">
-#   <h3>${selectedMovie.original_title}</h3>
-#   <p>Release Date: ${selectedMovie.release_date}</p>
-#   <p>Average Vote: ${selectedMovie.vote_average.toFixed(2)}</p>
-#   <p>Vote Count: ${selectedMovie.vote_count}</p>
-#   <p>Popularity: ${selectedMovie.popularity.toFixed(2)}</p>
-#   <p>Overview: ${selectedMovie.overview}</p>
-# </div>`
-```
 
 ```{ojs}
 //| expandable: false
@@ -347,10 +329,10 @@ formattedPopularity = new Intl.NumberFormat('en-US').format(Math.round(selectedM
 html`<div style="display: flex; flex-direction: column; align-items: center; color: white;">
   <!-- Sección del póster -->
   <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 20px;">
-    <img src="${selectedMovie.poster_url}"
+    <img src="${selectedMovie.backdrop_url}"
          alt="${selectedMovie.original_title}"
          style="max-width: 80%; 
-                max-height: 200px;
+                max-height: 400px;
                 width: auto;
                 height: auto;
                 object-fit: contain;">
@@ -359,31 +341,21 @@ html`<div style="display: flex; flex-direction: column; align-items: center; col
   <!-- Sección de estadísticas -->
   <div style="width: 90%; text-align: center;">
     <h2>${selectedMovie.original_title}</h2>
-    <p style="font-size: 1.2em;"><strong>Release Date:</strong> ${selectedMovie.release_date}</p>
-    <p style="font-size: 1.2em;">
+    <p style="font-size: 0.8em;"><strong>Release Date:</strong> ${selectedMovie.release_date}</p>
+    <p style="font-size: 0.8em;">
       <img src="https://img.icons8.com/emoji/48/000000/star-emoji.png" width="18" style="vertical-align: middle;" /> 
       <strong>Average Vote:</strong> ${formattedVoteAverage}
     </p>
-    <p style="font-size: 1.2em;">
+    <p style="font-size: 0.8em;">
       <img src="https://img.icons8.com/ios-filled/50/000000/thumb-up.png" width="18" style="vertical-align: middle; filter: invert(1) brightness(2);" /> 
       <strong>Vote Count:</strong> ${selectedMovie.vote_count}
     </p>
-    <p style="font-size: 1.2em;">
+    <p style="font-size: 0.8em;">
       <img src="https://img.icons8.com/ios-filled/50/000000/fire-element.png" width="18" style="vertical-align: middle; filter: invert(1) brightness(2);" /> 
       <strong>Popularity:</strong> ${formattedPopularity}
     </p>
-    <p style="font-size: 1.2em; text-align: justify;"><strong>Overview:</strong> ${selectedMovie.overview}</p>
+    <p style="font-size: 0.8em; text-align: justify;"><strong>Overview:</strong> ${selectedMovie.overview}</p>
   </div>
 </div>`
 
 ```
-
-
-### Row {height="10%"}
-
-<div style="display: flex; justify-content: flex-start; align-items: center; height: 50px; padding: 0 20px;">
-  <img src="images/logo.png" alt="Creator Logo" style="height: 40px; max-width: 100%; object-fit: contain; margin-right: 10px;">
-  <p style="font-size: 12px; color: #666; text-align: left; margin: 0;">
-    Los datos son cortesía del API de tmdb.org. Los datos se extraen bajo las políticas establecidas.
-  </p>
-</div>
