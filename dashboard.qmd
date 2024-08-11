@@ -71,10 +71,7 @@ movies_df <- movies_df %>%
 ```
 
 
-
 ```{r, stars}
-#| echo: false
-#| include: false
 generate_star_rating <- function(vote_averages) {
   sapply(vote_averages, function(vote_average) {
     vote_average <- round(as.numeric(vote_average), 1)  # Redondear a un decimal
@@ -86,112 +83,108 @@ generate_star_rating <- function(vote_averages) {
     full_stars <- floor(star_rating)
     half_star <- ifelse(star_rating %% 1 >= 0.5, 1, 0)
     
-    # Generar las estrellas llenas
-    stars_html <- strrep('<span style="color: gold;">&#9733;</span>', full_stars)
+    # Generar las estrellas llenas con tamaño más grande
+    stars_html <- strrep('<span style="color: gold; font-size: 1.8em;">&#9733;</span>', full_stars)
     
-    # Generar la media estrella si aplica
+    # Generar la media estrella si aplica con tamaño más grande
     if (half_star == 1) {
-      stars_html <- paste0(stars_html, '<span style="color: gold;">&#9734;</span>')
+      stars_html <- paste0(stars_html, '<span style="color: gold; font-size: 1.8em;">&#9734;</span>')
     }
     
-    # Completar con estrellas vacías
+    # Completar con estrellas vacías con tamaño más grande
     empty_stars <- 5 - full_stars - half_star
-    stars_html <- paste0(stars_html, strrep('<span style="color: #d3d3d3;">&#9733;</span>', empty_stars))
+    stars_html <- paste0(stars_html, strrep('<span style="color: #d3d3d3; font-size: 1.8em;">&#9733;</span>', empty_stars))
     
-    # Incluir el número redondeado después de las estrellas
-    stars_html <- paste0(stars_html, ' ', '<span style="font-size: 0.8em; color: white;">', vote_average, '</span>')
+    # Incluir el número redondeado después de las estrellas con tamaño ajustado
+    stars_html <- paste0(stars_html, ' ', '<span style="font-size: 1.5em; color: white;">', vote_average, '</span>')
     
     return(stars_html)
   }, USE.NAMES = FALSE)
 }
-```
 
-
-```{r, circular clock}
-#| echo: false
-#| include: false
-# Determinar el valor máximo y mínimo de days_in_theaters en el dataset actual
-max_days <- max(movies_df$days_in_theaters, na.rm = TRUE)
-min_days <- min(movies_df$days_in_theaters, na.rm = TRUE)
-
-
-generate_clock_svg <- function(days_in_theaters, max_days, min_days) {
-  days_in_theaters <- as.numeric(days_in_theaters)
-  
-  # Escalar days_in_theaters en un rango de 0 a 360 grados
-  angle <- ((days_in_theaters - min_days) / (max_days - min_days)) * 360
-  
-  # Calcular las coordenadas finales de la línea del reloj usando la escala de 360 grados
-  radians <- pi * (angle / 360)
-  x <- 25 + 20 * cos(radians)
-  y <- 25 - 20 * sin(radians)
-  
-  # Invertir la lógica de colores: verde para pocos días, rojo para muchos días
-  color <- ifelse(days_in_theaters < min_days + (max_days - min_days) * 0.2, "#1DB954", 
-                  ifelse(days_in_theaters < min_days + (max_days - min_days) * 0.5, "#EDDE11", "#ED8E11"))
-  
-  # Generar el código SVG para el reloj circular
-  svg_code <- sprintf(
-    '<svg height="50" width="50">
-      <circle cx="25" cy="25" r="20" stroke="black" stroke-width="2" fill="%1$s" />
-      <line x1="25" y1="25" x2="%2$s" y2="%3$s" stroke="black" stroke-width="2" />
-      <text x="25" y="25" font-size="12" text-anchor="middle" dy=".3em" fill="black">%4$s</text>
-    </svg>',
-    color, x, y, days_in_theaters
-  )
-  
-  return(svg_code)
-}
-
-
-
-# Determinar el valor máximo de days_in_theaters en el dataset actual
-#max_days <- max(movies_df$days_in_theaters, na.rm = TRUE)
 ```
 
 ```{r, function progress bar}
 #| echo: false
 #| include: false
-generate_dynamic_progress_bar <- function(popularity_value, max_value, min_value) {
-  popularity_value <- round(as.numeric(popularity_value))  # Redondear a entero
+generate_dynamic_progress_bar <- function(variable_name, max_value, min_value) {
+  variable_name <- round(as.numeric(variable_name))  # Redondear a entero
 
   # Escalar el valor de popularidad a un porcentaje relativo, asegurando que no supere el 100%
-  percentage <- min((popularity_value - min_value*0.98) / (max_value - min_value) * 100, 100)
+  percentage <- min((variable_name - min_value*0.98) / (max_value - min_value) * 100, 100)
   
   # Formatear el número con separadores de miles
-  formatted_value <- format(popularity_value, big.mark = ",", scientific = FALSE)
+  formatted_value <- format(variable_name, big.mark = ",", scientific = FALSE)
   
   # Generar el código HTML para la barra de progreso con el número visible
-  bar_color <- ifelse(percentage > 80, "#1DB954", ifelse(percentage > 50, "#EDDE11", "#ED8E11"))
+  bar_color <- ifelse(percentage > 80, "#ED8E11", ifelse(percentage > 30, "#EDDE11", "#1DB954"))
   
   bar_code <- sprintf(
-    '<div style="width: 120px; height: 20px; background-color: #3A3A3A; border-radius: 5px; position: relative; display: flex; align-items: left; justify-content: flex-start;">
+    '<div style="width: 160px; height: 20px; background-color: #3A3A3A; border-radius: 5px; position: relative; display: flex; align-items: left; justify-content: flex-start;">
       <div style="width: %1$s%%; height: 100%%; background-color: %2$s; border-radius: 5px;"></div>
-      <div style="position: absolute; width: 120px; text-align: left; padding-left: 5px; font-size: 12px; color: white;">%3$s</div>
+      <div style="position: absolute; width: 160px; text-align: left; padding-left: 5px; font-size: 15px; color: white; display: flex; align-items: center;">%3$s</div>
     </div>',
     percentage, bar_color, formatted_value
   )
   
   return(bar_code)
 }
-
-# Determinar el valor máximo y mínimo de popularidad en el dataset actual
-max_popularity <- max(movies_df$popularity, na.rm = TRUE)
-min_popularity <- min(movies_df$popularity, na.rm = TRUE)
 ```
+
+```{r, termometro}
+#| echo: false
+#| include: false
+generate_thermometer_svg <- function(variable_name, max_value, min_value) {
+  # Asegurarse de que el valor es numérico
+  variable_name <- round(as.numeric(variable_name))
+  
+  # Escalar el valor para que funcione en la visualización del termómetro
+  percentage <- (variable_name - min_value) / (max_value - min_value) * 100
+  
+  # Determinar la altura del termómetro
+  bar_height <- percentage * 50 / 100  # Escalar la altura
+  
+  color <- ifelse(percentage > 80, "#1DB954", ifelse(percentage > 30, "#EDDE11", "#ED8E11"))
+  
+  # Formatear el número con separadores de miles
+  formatted_value <- format(variable_name, big.mark = ",", scientific = FALSE)
+  
+  svg_code <- sprintf(
+    '<div style="display: flex; align-items: center;">
+      <svg height="50" width="30">
+        <rect x="5" y="0" width="50" height="50" fill="#3A3A3A" />
+        <rect x="5" y="%1$s" width="50" height="%2$s" fill="%3$s" />
+      </svg>
+      <div style="padding-left: 10px; font-size: 15px; color: white;display: flex; align-items: center;">%4$s</div>
+    </div>',
+    50 - bar_height, bar_height, color, formatted_value
+  )
+  
+  return(svg_code)
+}
+```
+
 
 ```{r, gt table}
 #| echo: false
 #| include: true
-# Crear la tabla GT con la barra de progreso dinámica, las estrellas y los relojes circulares
+# Determinar el valor máximo y mínimo de days_in_theaters en el dataset actual
+max_days <- max(movies_df$days_in_theaters, na.rm = TRUE)
+min_days <- min(movies_df$days_in_theaters, na.rm = TRUE)
+
+# Determinar el valor máximo y mínimo de popularidad en el dataset actual
+max_popularity <- max(movies_df$popularity, na.rm = TRUE)
+min_popularity <- min(movies_df$popularity, na.rm = TRUE)
+
+# Crear la tabla GT con la barra de progreso dinámica y el termómetro intercambiados
 movies_df %>%
-  select(backdrop_url, original_title, days_in_theaters, vote_average, popularity) %>%
+  select(backdrop_url, original_title, vote_average, days_in_theaters, popularity) %>%  # Cambia el orden aquí
   gt::gt() %>%
   gt::cols_label(
     backdrop_url = md("**Movie**"),
     original_title = "",
+    vote_average = md("**Stars**"),  # Renombrar a Puntuación
     days_in_theaters = md("**Days in Theaters**"),
-    vote_average = md("**Average**"),
     popularity = md("**Popularity**")
   ) %>%
   fmt_number(
@@ -200,29 +193,35 @@ movies_df %>%
   ) %>%
   text_transform(
     locations = cells_body(columns = backdrop_url),
-    fn = function(x) { web_image(url = x, height = 50) }
+    fn = function(x) { web_image(url = x, height = 80) }
   ) %>%
   text_transform(
     fn = function(x) {
-      sapply(x, generate_clock_svg, max_days = max_days, min_days = min_days)
-    },
-    locations = cells_body(columns = "days_in_theaters")
-  ) %>%
-  text_transform(
-    fn = function(x) {
-      generate_star_rating(x)  # Aquí se aplica la función de estrellas
+      generate_star_rating(x)  # Aplica la función de estrellas a la columna Puntuación
     },
     locations = cells_body(columns = "vote_average")
   ) %>%
   text_transform(
     fn = function(x) {
-      sapply(x, generate_dynamic_progress_bar, max_value = max_popularity, min_value = min_popularity)
+      sapply(as.numeric(x), generate_dynamic_progress_bar, max_value = max_days, min_value = min_days)
+    },
+    locations = cells_body(columns = "days_in_theaters")
+  ) %>%
+  text_transform(
+    fn = function(x) {
+      sapply(as.numeric(x), generate_thermometer_svg, max_value = max_popularity, min_value = min_popularity)
     },
     locations = cells_body(columns = "popularity")
   ) %>%
   cols_align(
     align = "center",
-    columns = c("days_in_theaters", "vote_average", "popularity")
+    columns = c("vote_average", "days_in_theaters", "popularity")
+  ) %>%
+  tab_style(
+    style = list(
+    cell_text(size = px(20))  # Ajusta el tamaño del texto, usa px para pixeles
+    ),
+    locations = cells_body(columns = "original_title")
   ) %>%
   tab_options(
     table.font.color = "#FFFFFF",
@@ -236,17 +235,14 @@ movies_df %>%
     column_labels.border.top.color = "transparent"
   )
 
+
 ```
-
-
-
-
 
 ## Column {width="40%"}
 
 ### Row {height="10%"}
 
-```{r}
+```{r, reduce la tabla}
 #| echo: false
 #| include: false
 # Excluir el campo genre_ids y convertir a JSON
