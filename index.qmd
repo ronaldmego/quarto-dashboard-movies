@@ -10,6 +10,8 @@ En este proyecto, muestro las capacidades de **Quarto** y **GitHub Actions** par
 - 🌐 **Conexión API**: Para obtener datos en tiempo real.
 - 📋 **GT Tables**: Para crear tablas interactivas y estilizadas.
 
+![](images/demo.png)
+
 Este trabajo fue elaborado por **Ronald Mego** y está inspirado en el proyecto ganador del Posit Table Contest 2024, donde la ganadora fue [Melissa Van Bussel](https://github.com/melissavanbussel) 🏆.
 
 ---
