@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ronaldmego.github.io/Quarto-dashboard-movies/dashboard/about.html</loc>
-    <lastmod>2024-09-18T13:14:35.539Z</lastmod>
-  </url>
-  <url>
     <loc>https://ronaldmego.github.io/Quarto-dashboard-movies/dashboard/dashboard.html</loc>
-    <lastmod>2024-09-18T13:14:35.539Z</lastmod>
+    <lastmod>2024-09-19T13:14:48.371Z</lastmod>
   </url>
   <url>
     <loc>https://ronaldmego.github.io/Quarto-dashboard-movies/dashboard/index.html</loc>
-    <lastmod>2024-09-18T13:14:35.543Z</lastmod>
+    <lastmod>2024-09-19T13:14:48.376Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ronaldmego.github.io/Quarto-dashboard-movies/dashboard/about.html</loc>
+    <lastmod>2024-09-19T13:14:48.371Z</lastmod>
   </url>
 </urlset>
